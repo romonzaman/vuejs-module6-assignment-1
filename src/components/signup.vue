@@ -44,12 +44,12 @@ const signupHandler = ()=>{
 <template>
 
     <div class="">
-        <div class="w-full flex flex-col bg-blue-100 h-screen  justify-center items-center">
-            <div class="h-1/2 flex flex-col justify-center items-center">
+        <div class="w-full flex flex-col bg-blue-100 h-screen  justify-start items-center">
+            <div class="flex flex-col justify-center items-center">
                 <img src="/draw2.svg" alt="" class="h-64 w-64 m-5 rounded-full bg-blue-200">
-                <h1 class="text-4xl">Registration</h1>
+                <h1 class="text-4xl mb-5">Registration</h1>
             </div>
-            <div class="h-1/2 w-3/4 max-w-lg flex justify-center items-start">
+            <div class="w-3/4 max-w-lg flex justify-center items-start">
                 <form @submit.prevent="signupHandler" action="" class="border-2 w-full rounded-md p-10 bg-white">
 
                     <div class="flex flex-col justify-start items-start">

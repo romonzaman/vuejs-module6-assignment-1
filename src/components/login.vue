@@ -59,10 +59,10 @@ const loginHandler = () => {
 
 <template>
     <div class="">
-        <div class="w-full flex flex-col bg-blue-100 h-screen  justify-center items-center">
-            <div class="h-1/2 flex flex-col justify-center items-center">
+        <div class="w-full flex flex-col bg-blue-100 h-screen  justify-start items-center">
+            <div class="flex flex-col justify-center items-center">
                 <img src="/draw2.svg" alt="" class="h-64 w-64 m-5 rounded-full bg-blue-200">
-                <h1 class="text-4xl">Login</h1>
+                <h1 class="text-4xl mb-5">Login</h1>
 
                 <div role="status" class="mt-7" :class="loading?'':'hidden'">
                     <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
