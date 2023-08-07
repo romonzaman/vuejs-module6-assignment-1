@@ -12,6 +12,7 @@ const emit = defineEmits(['funcLogin', 'funcChange'])
 const loading = ref(false)
 const btnDisabled = ref(false)
 const loginFailed = ref(false)
+const loginOK = ref(false)
 
 const form = reactive({
     email: '',
@@ -39,6 +40,7 @@ const loginHandler = () => {
 
     if (form.email != props.logindata.email || form.password!=props.logindata.password){
         loginFailed.value=true
+        loginOK.value=false
         return
     }
 
@@ -49,7 +51,11 @@ const loginHandler = () => {
     // simulate api execution delay
     setTimeout(()=>{
         loading.value = false
-        emit('funcLogin', form)
+        loginOK.value=true
+        setTimeout(()=>{
+            loginFailed.value = false
+            emit('funcLogin', form)
+        },500)
     },1000)
     
 }
@@ -76,9 +82,10 @@ const loginHandler = () => {
                     </svg>
                     <span class="sr-only">Loading...</span>
                 </div>
-                <div class="error pt-5 text-red-600 text-xs italic font-bold"
-                    :class="loginFailed?'':'hidden'" 
+                <div v-if="loginFailed" class="error pt-5 pb-2 text-red-600 text-xs italic font-bold"
                 >Username and password are incorrect. please try again</div>
+                <div v-if="loginOK" class="pt-5 pb-2 text-green-600 text-xs italic font-bold"
+                >Login successful. redirecting to welcome page</div>
             </div>
             <div class="h-1/2 w-3/4 max-w-lg flex justify-center items-start">
                 <form @submit.prevent="loginHandler" action="" class="border-2 w-full rounded-md px-10 py-10 bg-white">
@@ -101,7 +108,7 @@ const loginHandler = () => {
                     </div>
 
                     <div class="flex justify-start items-start mt-5">
-                        <button class="p-2 bg-purple-400 rounded-md hover:bg-purple-900 hover:text-white"
+                        <button class="p-2 bg-blue-300 rounded-md hover:bg-blue-600 hover:text-white"
                             type="submit" :disabled="btnDisabled">Login</button>
                     </div>
                     <div>
