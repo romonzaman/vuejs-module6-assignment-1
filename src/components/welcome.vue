@@ -21,7 +21,7 @@ const logoutHandler = ()=>{
     <div class="">
         <div class="w-full flex flex-col bg-blue-100 h-screen  justify-center items-center">
             <div class="h-1/2 flex justify-center items-end">
-                <img src="/draw2.svg" alt="" class="h-64 w-64 m-5 rounded-full bg-blue-200">
+                <img src="/logo.png" alt="" class="h-64 w-64 m-5 rounded-full bg-blue-200 opacity-60">
             </div>
             <div class="h-1/2 w-3/4 max-w-lg flex flex-col justify-start items-center">
                 <div class="flex justify-center items-center bg-white w-full p-5">

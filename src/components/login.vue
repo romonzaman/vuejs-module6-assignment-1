@@ -61,7 +61,7 @@ const loginHandler = () => {
     <div class="">
         <div class="w-full flex flex-col bg-blue-100 h-screen  justify-start items-center">
             <div class="flex flex-col justify-center items-center">
-                <img src="/draw2.svg" alt="" class="h-64 w-64 m-5 rounded-full bg-blue-200">
+                <img src="/logo.png" alt="" class="h-64 w-64 m-5 rounded-full bg-blue-200 opacity-50">
                 <h1 class="text-4xl mb-5">Login</h1>
 
                 <div role="status" class="mt-7" :class="loading?'':'hidden'">
