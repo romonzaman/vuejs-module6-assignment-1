@@ -78,7 +78,7 @@ const signupHandler = ()=>{
 
                     <div class="flex justify-start items-start mt-5">
                         <button class="p-2 bg-purple-400 rounded-md hover:bg-purple-900 hover:text-white">Signup</button>
-                        <button class="p-2 bg-gray-200 rounded-md mx-5 hover:bg-gray-700 hover:text-white" @click.prevent="funcChange">Cancel</button>
+                        <button class="p-2 bg-gray-200 rounded-md mx-5 hover:bg-gray-700 hover:text-white" @click.prevent="$emit('funcChange')">Cancel</button>
                     </div>
                     <div>
                         <span class="text-xs text-gray-500">Already Have account? click to <a @click.prevent="$emit('funcChange')" href="#" class="text-blue-500 hover:bg-blue-800 hover:text-white">Login</a></span>

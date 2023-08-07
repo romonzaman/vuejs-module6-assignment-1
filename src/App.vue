@@ -6,7 +6,7 @@ import login from './components/login.vue'
 import welcome from './components/welcome.vue'
 
 const loggedIn = ref(false)
-const isRegister = ref(false)
+const isRegister = ref(true)
 
 
 //default login
