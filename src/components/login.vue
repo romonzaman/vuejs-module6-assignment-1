@@ -1,11 +1,17 @@
 <script setup>
 import { ref, reactive } from 'vue';
 
-defineProps([
-    'funcChange'
-])
+const props = defineProps({
+    logindata: {
+        type: Object
+    }
+})
 
-const emit = defineEmits(['funcLogin'])
+const emit = defineEmits(['funcLogin', 'funcChange'])
+
+const loading = ref(false)
+const btnDisabled = ref(false)
+const loginFailed = ref(false)
 
 const form = reactive({
     email: '',
@@ -16,12 +22,9 @@ const formError = reactive({
     password: false
 })
 
-const loading = ref(false)
-const btnDisabled = ref(false)
-
+//function - validate required, check login data
 const loginHandler = () => {
-    console.log(form.formError)
-
+    loginFailed.value=false
     if (form.email == '') {
         formError.email = true
     } else {
@@ -34,13 +37,20 @@ const loginHandler = () => {
     }
     if (formError.email || formError.password) return
 
-    console.log("Submitting")
+    if (form.email != props.logindata.email || form.password!=props.logindata.password){
+        loginFailed.value=true
+        return
+    }
+
     btnDisabled.value = true
     loading.value = true
+    loginFailed.value=false
+
+    // simulate api execution delay
     setTimeout(()=>{
         loading.value = false
         emit('funcLogin', form)
-    },2000)
+    },1000)
     
 }
 
@@ -66,7 +76,9 @@ const loginHandler = () => {
                     </svg>
                     <span class="sr-only">Loading...</span>
                 </div>
-
+                <div class="error pt-5 text-red-600 text-xs italic font-bold"
+                    :class="loginFailed?'':'hidden'" 
+                >Username and password are incorrect. please try again</div>
             </div>
             <div class="h-1/2 w-3/4 max-w-lg flex justify-center items-start">
                 <form @submit.prevent="loginHandler" action="" class="border-2 w-full rounded-md px-10 py-10 bg-white">
@@ -95,7 +107,7 @@ const loginHandler = () => {
                             type="button">Cancel</button>
                     </div>
                     <div>
-                        <span class="text-xs text-gray-500">Don't Have account? click to <a @click.prevent="funcChange"
+                        <span class="text-xs text-gray-500">Don't Have account? click to <a @click.prevent="$emit('funcChange')"
                                 href="#" class="text-blue-500 hover:bg-blue-800 hover:text-white">Signup</a></span>
                     </div>
             </form>

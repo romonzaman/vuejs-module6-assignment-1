@@ -1,11 +1,7 @@
 <script setup>
 import { reactive } from 'vue';
 
-defineProps([
-    'funcChange',
-])
-
-const emit = defineEmits(['funcSignup'])
+const emit = defineEmits(['funcSignup', 'funcChange'])
 
 const form = reactive({
     email: '',
@@ -85,7 +81,7 @@ const signupHandler = ()=>{
                         <button class="p-2 bg-gray-200 rounded-md mx-5 hover:bg-gray-700 hover:text-white" @click.prevent="funcChange">Cancel</button>
                     </div>
                     <div>
-                        <span class="text-xs text-gray-500">Already Have account? click to <a @click.prevent="funcChange" href="#" class="text-blue-500 hover:bg-blue-800 hover:text-white">Login</a></span>
+                        <span class="text-xs text-gray-500">Already Have account? click to <a @click.prevent="$emit('funcChange')" href="#" class="text-blue-500 hover:bg-blue-800 hover:text-white">Login</a></span>
                     </div>
 
                 </form>

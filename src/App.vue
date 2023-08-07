@@ -6,28 +6,15 @@ import login from './components/login.vue'
 import welcome from './components/welcome.vue'
 
 const loggedIn = ref(false)
+const isRegister = ref(false)
 
-const isRegister = ref(true)
 
-const funcSignup = () => {
-    isRegister.value = true
-}
-const funcLogin = () => {
-    isRegister.value = false
-}
-
+//default login
 const userData = reactive({
     email: 'romon.zaman@gmail.com',
     password: '123456'
 })
-const funcLoginHandler = (form)=>{
-    console.log(form)
-    if (form.email == userData.email && form.password==userData.password){
-        loggedIn.value = true
-    } else {
-        loggedIn.value = false
-    }
-}
+
 const funcSignupSuccess = (form)=>{
     userData.email=form.email
     userData.password=form.password
@@ -47,8 +34,9 @@ const logoutFunc = ()=>{
     </template>
 
     <template v-else>
-        <signup :func-change="funcLogin" @func-signup="funcSignupSuccess" v-if="isRegister" />
-        <login :func-change="funcSignup" @func-login="funcLoginHandler" v-else  />
+        <signup @func-change="()=>isRegister=false" @func-signup="funcSignupSuccess" v-if="isRegister" />
+
+        <login  @func-change="()=>isRegister=true" @func-login="()=>loggedIn=true" :logindata="userData"  v-else  />
     </template>
 </template>
 
