@@ -103,8 +103,6 @@ const loginHandler = () => {
                     <div class="flex justify-start items-start mt-5">
                         <button class="p-2 bg-purple-400 rounded-md hover:bg-purple-900 hover:text-white"
                             type="submit" :disabled="btnDisabled">Login</button>
-                        <button class="p-2 bg-gray-200 rounded-md mx-5 hover:bg-gray-700 hover:text-white"
-                            type="button">Cancel</button>
                     </div>
                     <div>
                         <span class="text-xs text-gray-500">Don't Have account? click to <a @click.prevent="$emit('funcChange')"
